@@ -28,6 +28,9 @@ mov bx, 0       ; es:bx = 0x1000:0x0000
 int 0x13
 jc disk_error
 
+; Disable interrupts before mode switch
+cli
+
 ; Print subroutine
 print:
     mov ah, 0x0e
