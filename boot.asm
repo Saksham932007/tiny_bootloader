@@ -73,6 +73,11 @@ gdt_start:
         db 0x00         ; base (bits 24-31)
 gdt_end:
 
+; GDT Pointer
+gdt_pointer:
+    dw gdt_end - gdt_start - 1  ; size
+    dd gdt_start                ; offset
+
 loading_msg db 'Loading 32-bit Kernel...', 13, 10, 0
 disk_error_msg db 'Disk read error!', 13, 10, 0
 
