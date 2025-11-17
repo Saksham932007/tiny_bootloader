@@ -59,7 +59,11 @@ protected_mode_start:
     ; Jump to C Kernel
     call 0x1000
 
-; Print subroutine
+    ; Final halt (just in case kernel returns)
+    hlt
+
+; 16-bit code for print function
+bits 16
 print:
     mov ah, 0x0e
 .loop:
