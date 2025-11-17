@@ -56,6 +56,9 @@ protected_mode_start:
     ; Set up 32-bit stack
     mov esp, 0x90000
 
+    ; Jump to C Kernel
+    call 0x1000
+
 ; Print subroutine
 print:
     mov ah, 0x0e
