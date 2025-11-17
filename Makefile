@@ -3,6 +3,7 @@
 C_FLAGS = -m32 -ffreestanding -nostdlib -nostdinc -c
 
 all: build
+	cat boot.com kernel.bin > image.img
 
 kernel.o: kernel.c
 	gcc $(C_FLAGS) kernel.c -o kernel.o
