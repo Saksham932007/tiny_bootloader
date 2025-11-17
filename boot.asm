@@ -47,6 +47,32 @@ disk_error:
 
 hlt
 
+; Global Descriptor Table
+gdt_start:
+    ; Null Descriptor
+    gdt_null:
+        dd 0x0
+        dd 0x0
+    
+    ; Code Segment Descriptor (32-bit, 4GB)
+    gdt_code:
+        dw 0xFFFF       ; limit (bits 0-15)
+        dw 0x0000       ; base (bits 0-15)
+        db 0x00         ; base (bits 16-23)
+        db 10011010b    ; access byte
+        db 11001111b    ; granularity byte
+        db 0x00         ; base (bits 24-31)
+    
+    ; Data Segment Descriptor (32-bit, 4GB)
+    gdt_data:
+        dw 0xFFFF       ; limit (bits 0-15)
+        dw 0x0000       ; base (bits 0-15)
+        db 0x00         ; base (bits 16-23)
+        db 10010010b    ; access byte
+        db 11001111b    ; granularity byte
+        db 0x00         ; base (bits 24-31)
+gdt_end:
+
 loading_msg db 'Loading 32-bit Kernel...', 13, 10, 0
 disk_error_msg db 'Disk read error!', 13, 10, 0
 
