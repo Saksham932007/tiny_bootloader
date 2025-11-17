@@ -53,6 +53,9 @@ protected_mode_start:
     mov fs, ax
     mov gs, ax
 
+    ; Set up 32-bit stack
+    mov esp, 0x90000
+
 ; Print subroutine
 print:
     mov ah, 0x0e
