@@ -24,6 +24,9 @@ mov bx, 0x1000  ; load to 0x1000
 mov es, bx
 mov bx, 0       ; es:bx = 0x1000:0x0000
 
+; Read kernel from disk
+int 0x13
+
 ; Print subroutine
 print:
     mov ah, 0x0e
