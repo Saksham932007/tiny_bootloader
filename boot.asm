@@ -13,6 +13,17 @@ mov sp, 0x7C00
 mov si, loading_msg
 call print
 
+; Set up disk read parameters
+mov ah, 0x02    ; read sectors
+mov al, 1       ; read 1 sector
+mov ch, 0       ; track 0
+mov cl, 2       ; sector 2 (sector 1 is the bootloader)
+mov dh, 0       ; head 0
+mov dl, 0       ; drive 0 (floppy A)
+mov bx, 0x1000  ; load to 0x1000
+mov es, bx
+mov bx, 0       ; es:bx = 0x1000:0x0000
+
 ; Print subroutine
 print:
     mov ah, 0x0e
