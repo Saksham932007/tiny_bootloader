@@ -10,7 +10,10 @@ kernel.o: kernel.c
 kernel.bin: kernel.o
 	ld -m elf_i386 -T linker.ld -o kernel.bin kernel.o --oformat=binary
 
-build:
+boot.com: boot.asm
+	nasm -f bin boot.asm -o boot.com
+
+build: boot.com kernel.bin
 	@echo "Building bootloader and kernel..."
 
 run:
