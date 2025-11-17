@@ -34,6 +34,11 @@ cli
 ; Load GDT
 lgdt [gdt_pointer]
 
+; Enable Protected Mode (set PE bit)
+mov eax, cr0
+or eax, 0x1
+mov cr0, eax
+
 ; Print subroutine
 print:
     mov ah, 0x0e
