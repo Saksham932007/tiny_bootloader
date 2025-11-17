@@ -45,6 +45,13 @@ jmp 0x08:protected_mode_start
 ; 32-bit Protected Mode Code
 bits 32
 protected_mode_start:
+    ; Set up 32-bit segment registers
+    mov ax, 0x10    ; 0x10 is the data segment offset from the GDT
+    mov ds, ax
+    mov ss, ax
+    mov es, ax
+    mov fs, ax
+    mov gs, ax
 
 ; Print subroutine
 print:
