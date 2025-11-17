@@ -42,6 +42,10 @@ mov cr0, eax
 ; Perform long jump to flush CPU pipeline
 jmp 0x08:protected_mode_start
 
+; 32-bit Protected Mode Code
+bits 32
+protected_mode_start:
+
 ; Print subroutine
 print:
     mov ah, 0x0e
