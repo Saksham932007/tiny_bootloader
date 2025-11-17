@@ -23,3 +23,4 @@ run:
 
 clean:
 	@echo "Cleaning up..."
+	rm -f *.o *.com *.bin *.img bochsout.txt
