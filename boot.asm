@@ -26,6 +26,7 @@ mov bx, 0       ; es:bx = 0x1000:0x0000
 
 ; Read kernel from disk
 int 0x13
+jc disk_error
 
 ; Print subroutine
 print:
@@ -39,9 +40,15 @@ print:
 .done:
     ret
 
+disk_error:
+    mov si, disk_error_msg
+    call print
+    hlt
+
 hlt
 
 loading_msg db 'Loading 32-bit Kernel...', 13, 10, 0
+disk_error_msg db 'Disk read error!', 13, 10, 0
 
 times 510-($-$$) db 0
 dw 0xAA55
