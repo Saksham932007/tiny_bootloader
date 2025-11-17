@@ -31,6 +31,9 @@ jc disk_error
 ; Disable interrupts before mode switch
 cli
 
+; Load GDT
+lgdt [gdt_pointer]
+
 ; Print subroutine
 print:
     mov ah, 0x0e
